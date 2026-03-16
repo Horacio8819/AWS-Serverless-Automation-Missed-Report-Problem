@@ -44,9 +44,9 @@ Cloud Engineering Workshop – Serverless Automation Lab
 
 # Challenges
 
-How does it scale if 1000 clients upload at once?
-Should we use Slack or EventBridge for faster response?
-How can I add monitoring, retries, or logging?
+- How does it scale if 1000 clients upload at once?
+- Should we use Slack or EventBridge for faster response?
+- How can I add monitoring, retries, or logging?
 
 ## Scenario:
 The client’s analysts rely on these reports to generate dashboards by 9 AM.
@@ -55,6 +55,6 @@ The analysts show up at 9 AM, nothing happens.
 No error. No alert. Silence.
 
 ## 💭Think through:
-What AWS service could run once a day to check for missing files?
-How would it verify that no new data came in?
-What’s the business cost of silence?
+- What AWS service could run once a day to check for missing files?
+- How would it verify that no new data came in?
+- What’s the business cost of silence?
