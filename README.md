@@ -198,3 +198,15 @@ Notification: SNS topic (pipeline-alerts)
                                                                       ▼
                                                                 Analyst Email
 
+# Problem that i face during project and Solution
+
+## CloudWatch Logs: AWS Lambda SNS Publish Error – InvalidParameterException: Invalid parameter: TopicArn
+### Error Log
+[ERROR] InvalidParameterException: An error occurred (InvalidParameter) when calling the Publish operation: Invalid parameter: TopicArn
+
+### Analysis
+The Lambda execution fails with an InvalidParameterException related to the TopicArn.
+This happens due to SNS Topic created with false Region
+
+### Solution
+create SNS in the coresponding region
