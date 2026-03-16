@@ -143,4 +143,4 @@ Step 5: Add the SNS Topic to Lambda
 - Go to S3 → your bucket → Upload file.
 
 
-
+![Image Alt](https://github.com/Horacio8819/AWS-Serverless-Automation-Missed-Report-Problem/blob/e00c6febcfbcce17cd506022fa22ef9af049f14b/Upload_Email_Verification.png)
