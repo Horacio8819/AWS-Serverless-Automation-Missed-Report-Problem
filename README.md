@@ -58,3 +58,43 @@ No error. No alert. Silence.
 - What AWS service could run once a day to check for missing files?
 - How would it verify that no new data came in?
 - What’s the business cost of silence?
+
+
+
+# Goal
+
+Automatically notify analysts whenever a new sales report is uploaded.
+
+Instead of manually checking folders, the system will automatically send an email.
+
+## Architecture:
+
+                                                   Sales Report Upload
+                                                            │
+                                                            ▼
+                                                    Amazon S3 Bucket
+                                                            │
+                                                            ▼
+                                                    S3 Event Trigger
+                                                            │
+                                                            ▼
+                                                    AWS Lambda Function
+                                                            │
+                                                            ▼
+                                                    Amazon SNS Topic
+                                                            │
+                                                            ▼
+                                                    Email Notification
+
+**Step 1: Create the Notification Channel (SNS)**
+1⃣ In the AWS console, search for SNS (Simple Notification Service).
+2⃣ Click Topics → Create topic.
+3⃣ Type: Standard
+4⃣ Name: report-upload-alerts
+5⃣ Click Create topic
+Now let’s add an email address that will receive alerts:
+1⃣ Click Create subscription
+2⃣ Protocol: Email
+3⃣ Endpoint: your email address
+4⃣ Click Create subscription
+5⃣ Check your inbox and Confirm subscription.
