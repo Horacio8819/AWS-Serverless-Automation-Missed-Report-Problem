@@ -172,4 +172,5 @@ Notification: SNS topic (pipeline-alerts)
 * Improves production reliability
 
 **Temporarily break the Lambda code (for example remove the SNS topic ARN) → Upload a file to S3 → Lambda will fail → After a few minutes, CloudWatch triggers the alarm**
+
 ![Image Alt](https://github.com/Horacio8819/AWS-Serverless-Automation-Missed-Report-Problem/blob/7f6b6cc377716f6b4323d2dadcc61a9fc8a84939/Alarm_Verification.png)
