@@ -61,7 +61,7 @@ No error. No alert. Silence.
 
 
 
-# Goal
+# Automation Steps
 
 Automatically notify analysts whenever a new sales report is uploaded.
 
@@ -87,11 +87,12 @@ Instead of manually checking folders, the system will automatically send an emai
                                                     Email Notification
 
 **Step 1: Create the Notification Channel (SNS)**
-1⃣ In the AWS console, search for SNS (Simple Notification Service).
-2⃣ Click Topics → Create topic.
-3⃣ Type: Standard
-4⃣ Name: report-upload-alerts
-5⃣ Click Create topic
+1 In the AWS console, search for *SNS (Simple Notification Service)*.
+2 Click Topics → Create topic.
+3 Type: Standard
+4 Name: report-upload-alerts
+5 Click Create topic
+
 Now let’s add an email address that will receive alerts:
 1⃣ Click Create subscription
 2⃣ Protocol: Email
