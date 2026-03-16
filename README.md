@@ -42,23 +42,6 @@ New file uploaded: s3://insightdata-reports-hg/sales_report.csv
 
 Cloud Engineering Workshop – Serverless Automation Lab
 
-# Challenges
-
-- How does it scale if 1000 clients upload at once?
-- Should we use Slack or EventBridge for faster response?
-- How can I add monitoring, retries, or logging?
-
-## Scenario:
-The client’s analysts rely on these reports to generate dashboards by 9 AM.
-Tomorrow, no one uploads anything to the bucket.
-The analysts show up at 9 AM, nothing happens.
-No error. No alert. Silence.
-
-## 💭Think through:
-- What AWS service could run once a day to check for missing files?
-- How would it verify that no new data came in?
-- What’s the business cost of silence?
-
 
 
 # Automation Steps
@@ -144,3 +127,23 @@ Step 5: Add the SNS Topic to Lambda
 
 
 ![Image Alt](https://github.com/Horacio8819/AWS-Serverless-Automation-Missed-Report-Problem/blob/e00c6febcfbcce17cd506022fa22ef9af049f14b/Upload_Email_Verification.png)
+
+
+
+# Challenges
+
+- How does it scale if 1000 clients upload at once?
+- Should we use Slack or EventBridge for faster response?
+- How can I add monitoring, retries, or logging?
+
+## Scenario:
+The client’s analysts rely on these reports to generate dashboards by 9 AM.
+Tomorrow, no one uploads anything to the bucket.
+The analysts show up at 9 AM, nothing happens.
+No error. No alert. Silence.
+
+## 💭Think through:
+- What AWS service could run once a day to check for missing files?
+- How would it verify that no new data came in?
+- What’s the business cost of silence?
+
