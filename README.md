@@ -148,9 +148,9 @@ No error. No alert. Silence.
 - How would it verify that no new data came in?
 - What’s the business cost of silence?
 
-# Improvement
+## Improvement
 
-## Monitoring and Alerts
+### Monitoring and Alerts
 
 To improve reliability, monitoring was implemented using Amazon CloudWatch.
 
@@ -161,16 +161,15 @@ Pipeline Monitoring Flow:
 S3 Upload → Lambda Execution → CloudWatch Metrics → CloudWatch Alarm → SNS Alert → DevOps Email
 
 ### Alarm Configuration
-
 Metric: Lambda Errors
 Threshold: Errors ≥ 1 within 5 minutes
 Notification: SNS topic (pipeline-alerts)
 
 ### Benefits
-
 * Detects failures automatically
 * Sends alerts to engineers
 * Prevents unnoticed pipeline outages
 * Improves production reliability
 
+**Temporarily break the Lambda code (for example remove the SNS topic ARN) → Upload a file to S3 → Lambda will fail → After a few minutes, CloudWatch triggers the alarm**
 ![Image Alt](https://github.com/Horacio8819/AWS-Serverless-Automation-Missed-Report-Problem/blob/7f6b6cc377716f6b4323d2dadcc61a9fc8a84939/Alarm_Verification.png)
