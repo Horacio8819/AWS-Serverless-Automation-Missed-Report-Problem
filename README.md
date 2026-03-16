@@ -87,15 +87,59 @@ Instead of manually checking folders, the system will automatically send an emai
                                                     Email Notification
 
 **Step 1: Create the Notification Channel (SNS)**
-1 In the AWS console, search for *SNS (Simple Notification Service)*.
-2 Click Topics → Create topic.
-3 Type: Standard
-4 Name: report-upload-alerts
-5 Click Create topic
+- In the AWS console, search for *SNS (Simple Notification Service)*.
+- Click Topics → Create topic.
+- Type: Standard
+- Name: report-upload-alerts
+- Click Create topic
 
 Now let’s add an email address that will receive alerts:
-1⃣ Click Create subscription
-2⃣ Protocol: Email
-3⃣ Endpoint: your email address
-4⃣ Click Create subscription
-5⃣ Check your inbox and Confirm subscription.
+- Click Create subscription
+- Protocol: Email
+- Endpoint: your email address
+- Click Create subscription
+- Check your inbox and Confirm subscription.
+
+**Step 2: Create the Storage (S3)**
+- Search for S3 in the AWS console → Create bucket
+- Name: insightdata-reports-<your-initials>
+- Region: pick one close to you.
+- Leave everything else as default → Create bucket
+
+Step 3: Create the Automation Function (Lambda)
+- Search for Lambda → Create function
+- Author from scratch
+- Function name: new-report-notifier
+- Runtime: Python 3.14
+- Permissions: Choose "Create default role" ==> “Create new role with basic Lambda permissions”
+- Click Create function
+
+**When the function loads: Scroll to Code source → click the file name → paste the lambda_function.py**
+**Deploy**
+
+**Step 4: Give Lambda Access to SNS**
+- Scroll down → Configuration → Permissions
+- Click the Role name → it opens IAM.
+- Click Add permissions → Attach policies.
+- Search for and add:
+**AmazonSNSFullAccess**
+**AWSLambdaBasicExecutionRole**
+
+Step 5: Add the SNS Topic to Lambda
+- Go to your SNS topic page 
+- Copy the Topic ARN (the long string starting with arn:aws:sns:)
+- Go back to Lambda → Configuration → Environment variables
+- Add:
+      Key: TOPIC_ARN
+      Value: (paste your topic ARN)
+
+**Step 6: Connect the Trigger (S3 → Lambda)**
+- In Lambda → Add trigger
+- Source: S3
+- Bucket: insightdata-reports-<your-initials>
+- Event type: “All object create events.”
+
+**Step 7: Test the Workflow**
+- Go to S3 → your bucket → Upload file.
+
+
