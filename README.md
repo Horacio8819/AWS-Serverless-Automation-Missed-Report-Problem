@@ -171,6 +171,30 @@ Notification: SNS topic (pipeline-alerts)
 * Prevents unnoticed pipeline outages
 * Improves production reliability
 
-**Temporarily break the Lambda code (for example remove the SNS topic ARN) → Upload a file to S3 → Lambda will fail → After a few minutes, CloudWatch triggers the alarm**
+**Temporarily break the Lambda code (for example remove the SNS topic ARN) → Upload a file to S3 → Lambda will fail → After a few minutes, CloudWatch triggers the alarm → DevOps Email**
 
 ![Image Alt](https://github.com/Horacio8819/AWS-Serverless-Automation-Missed-Report-Problem/blob/7f6b6cc377716f6b4323d2dadcc61a9fc8a84939/Alarm_Verification.png)
+
+
+## Solution for Challenges
+
+                                                                Client Upload
+                                                                      │
+                                                                      ▼
+                                                                Amazon S3
+                                                                      │
+                                                                      ▼
+                                                                Event Notification
+                                                                      │
+                                                                      ▼
+                                                                Amazon SQS (Buffer)
+                                                                      │
+                                                                      ▼
+                                                                AWS Lambda Workers
+                                                                      │
+                                                                      ▼
+                                                                Amazon SNS Notifications
+                                                                      │
+                                                                      ▼
+                                                                Analyst Email
+
